@@ -28,16 +28,18 @@
 local util = require 'lspconfig.util'
 
 return {
-  init_options = { hostInfo = 'neovim' },
-  cmd = { 'tsgo', '--stdio' },
-  filetypes = {
-    'javascript',
-    'javascriptreact',
-    'javascript.jsx',
-    'typescript',
-    'typescriptreact',
-    'typescript.tsx',
+  default_config = {
+    init_options = { hostInfo = 'neovim' },
+    cmd = { 'tsgo', '--lsp', '--stdio' },
+    filetypes = {
+      'javascript',
+      'javascriptreact',
+      'javascript.jsx',
+      'typescript',
+      'typescriptreact',
+      'typescript.tsx',
+    },
+    root_dir = util.root_pattern('tsconfig.json', 'jsconfig.json', 'package.json', '.git'),
+    single_file_support = true,
   },
-  root_dir = util.root_pattern('tsconfig.json', 'jsconfig.json', 'package.json', '.git'),
-  single_file_support = true,
 }
